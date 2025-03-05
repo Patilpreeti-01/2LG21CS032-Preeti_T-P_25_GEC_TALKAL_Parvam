@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Example - Combined</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: left;
+            margin: 20px;
+        }
+        input {
+            padding: 5px;
+            margin: 5px;
+        }
+        button {
+            padding: 8px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 2px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        .output {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: rgb(255, 0, 34)">JS Example - Combined</h1>
+
+    <div>
+        <label for="val1">Value 1:</label>
+        <input type="text" id="val1" placeholder="Enter number or text">
+    </div>
+    <div>
+        <label for="val2">Value 2:</label>
+        <input type="text" id="val2" placeholder="Enter number or text">
+    </div>
+
+    <div>
+        <button onclick="calculate()">Submit</button>
+    </div>
+
+    <div id="mathOutput" class="output"></div>
+    <div id="algebraOutput" class="output"></div>
+
+    <script>
+        function calculate() {
+            let val1 = document.getElementById("val1").value;
+            let val2 = document.getElementById("val2").value;
+            let mathOutput = "", algebraOutput = "";
+
+            if (!isNaN(val1) && !isNaN(val2) && val1 !== "" && val2 !== "") {
+                let a = parseFloat(val1);
+                let b = parseFloat(val2);
+                
+                // Arithmetic Operations
+                let sum = a + b;
+                let diff = a - b;
+                let prod = a * b;
+                let div = b !== 0 ? (a / b).toFixed(2) : "∞ (division by zero)";
+                let mod = b !== 0 ? a % b : "N/A";
+                let power = a ** b;
+                let inc = a + 1;
+                let dec = b - 1;
+
+                mathOutput = `
+                    <table>
+                        <tr>
+                            <th>X</th><th>Y</th><th>OP</th><th>Expression</th><th>Result</th>
+                        </tr>
+                        <tr><td>${a}</td><td>${b}</td><td>+</td><td>${a} + ${b}</td><td>${sum}</td></tr>
+                        <tr><td>${a}</td><td>${b}</td><td>-</td><td>${a} - ${b}</td><td>${diff}</td></tr>
+                        <tr><td>${a}</td><td>${b}</td><td>*</td><td>${a} * ${b}</td><td>${prod}</td></tr>
+                        <tr><td>${a}</td><td>${b}</td><td>/</td><td>${a} / ${b}</td><td>${div}</td></tr>
+                        <tr><td>${a}</td><td>${b}</td><td>%</td><td>${a} % ${b}</td><td>${mod}</td></tr>
+                        <tr><td>${a}</td><td>${b}</td><td>*</td><td>${a} * ${b}</td><td>${power}</td></tr>
+                        <tr><td>${a}</td><td>--</td><td>--</td><td>++${a}</td><td>${inc}</td></tr>
+                        <tr><td>${b}</td><td>--</td><td>--</td><td>--${b}</td><td>${dec}</td></tr>
+                    </table>`;
+
+                // Algebraic Identities
+                algebraOutput = `
+                     <table>
+                
+                    <tr>
+                   
+                 
+                    <td colspan="3">a² - b² = (a - b)(a + b)</br>${a}² - ${b}² = (${a} - ${b})(${a} + ${b})</br>${(a - b) * (a + b)}= ${(a - b) * (a + b)}</td>
+                </tr>
+    
+
+
+                    
+                    <tr>
+                        <td colspan="3">(a + b)² = a² + 2ab + b²</br>(${a} + ${b})² = ${a}² + 2(${a})(${b}) + ${b}²</br>${(a + b) ** 2} =${(a + b) ** 2}</td></tr>
+             
+                    <tr>
+                        <td colspan="3">a² + b² = (a + b)² - 2ab</br>${a}² + ${b}² = (${a} + ${b})² - 2(${a})(${b})</br>${(a + b) ** 2 - 2 * a * b}= ${(a + b) ** 2 - 2 * a * b}</td></tr>
+                    
+                    <tr>
+                        <td colspan="3">(a - b)² = a² - 2ab + b²</br>(${a} - ${b})² = ${a}² - 2(${a})(${b}) + ${b}²</br>${a * 2 - 2 * a * b + b ** 2} = ${a * 2 - 2 * a * b + b ** 2}</td></tr>
+                    
+                    <tr>
+                        <td colspan="3">a³ - b³ = (a - b)(a² + ab + b²)</br>${a}³ - ${b}³ =(${a} - ${b})(${a}² + (${a})(${b}) + ${b}²)</br>${(a - b) * (a * 2 + a * b + b * 2)} = ${(a - b) * (a * 2 + a * b + b * 2)}</td></tr>
+                    
+                </table>`;
+            } else {
+                // String Concatenation and Manipulation
+                let concatResult = val1 + val2;
+                let reverseString = concatResult.split("").reverse().join("");
+
+                mathOutput = `
+                    <table>
+                        <tr>
+                            <th>X</th><th>Y</th><th>Concat</th><th>Reverse</th><th>Length</th>
+                        </tr>
+                        <tr>
+                            <td>${val1}</td><td>${val2}</td><td>${concatResult}</td><td>${reverseString}</td><td>${concatResult.length}</td>
+                        </tr>
+                    </table>`;
+
+                algebraOutput = "";  // Algebraic identities do not apply for strings
+            }
+
+            document.getElementById("mathOutput").innerHTML = mathOutput;
+            document.getElementById("algebraOutput").innerHTML = algebraOutput;
+        }
+    </script>
+</body>
+</html>

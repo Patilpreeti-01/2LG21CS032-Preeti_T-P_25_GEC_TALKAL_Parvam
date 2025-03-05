@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Example 3</title>
+    <style>
+        table, th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: rgb(255, 0, 34);">JS Example 3</h1>
+    
+    <div>
+        <label for="txt1">Value1</label>
+        <input type="text" id="val1" name="val1" placeholder="Enter number">
+    </div>
+    <div>
+        <label for="txt2">Value2</label>
+        <input type="text" id="val2" name="val2" placeholder="Enter number">
+    </div>
+    <div>
+        <button onclick="getResult()">Submit</button>
+    </div> 
+    
+    <div id="resultContainer"></div>
+
+    <script>
+        function getResult() {
+            var val1 = document.getElementById('val1').value.trim();
+            var val2 = document.getElementById('val2').value.trim();
+            var result;
+    
+            if (!isNaN(val1) && !isNaN(val2) && val1 !== "" && val2 !== "") {
+                let num1 = parseFloat(val1);
+                let num2 = parseFloat(val2);
+
+                // Case 3: If both numbers are < 10, use algebraic formulas
+                if (num1 < 10 && num2 < 10) {
+                    let diffOfSquares = (num1 - num2) * (num1 + num2);
+                    let sumOfSquares = (num1 + num2) ** 2 - 2 * num1 * num2;
+                    let squareOfSum = (num1 + num2) ** 2;
+                    let squareOfDiff = (num1 - num2) ** 2;
+                    let diffOfCubes = (num1 - num2) * (num1 * 2 + num1 * num2 + num2 * 2);
+
+                    result = `
+                        <table>
+                            <tr>
+                                <th>Expression</th>
+                                <th>Formula</th>
+                                <th>Result</th>
+                            </tr>
+                            <tr>
+                                <td>a² - b²</td>
+                                <td>(${num1} - ${num2})(${num1} + ${num2})</td>
+                                <td>${diffOfSquares}</td>
+                            </tr>
+                            <tr>
+                                <td>(a + b)²</td>
+                                <td>${num1}² + 2(${num1} × ${num2}) + ${num2}²</td>
+                                <td>${squareOfSum}</td>
+                            </tr>
+                            <tr>
+                                <td>a² + b²</td>
+                                <td>(${num1} + ${num2})² - 2(${num1} × ${num2})</td>
+                                <td>${sumOfSquares}</td>
+                            </tr>
+                            <tr>
+                                <td>(a - b)²</td>
+                                <td>${num1}² - 2(${num1} × ${num2}) + ${num2}²</td>
+                                <td>${squareOfDiff}</td>
+                            </tr>
+                            <tr>
+                                <td>a³ - b³</td>
+                                <td>(${num1} - ${num2})(${num1}² + ${num1} × ${num2} + ${num2}²)</td>
+                                <td>${diffOfCubes}</td>
+                            </tr>
+                        </table>
+                    `;
+                } else {
+                    // Default Arithmetic Operations
+                    let resulta = num1 + num2;
+                    let results = num1 - num2;
+                    let resultm = num1 * num2;
+                    let resultd = num2 !== 0 ? (num1 / num2).toFixed(2) : "Infinity";
+                    let resultmod = num2 !== 0 ? num1 % num2 : "NaN";
+                    let resultinc = num1 + 1;
+                    let resultdec = num2 - 1;
+                    let resultexe = num1 ** num2;
+
+                    result = `
+                        <table>
+                            <tr>
+                                <th>X</th>
+                                <th>Y</th>
+                                <th>OP</th>
+                                <th>Expression</th>
+                                <th>Result</th>
+                            </tr>
+                            <tr>
+                                <td>${num1}</td>
+                                <td>${num2}</td>
+                                <td>+</td>
+                                <td>${num1} + ${num2}</td>
+                                <td>${resulta}</td>
+                            </tr>
+                            <tr>
+                                <td>${num1}</td>
+                                <td>${num2}</td>
+                                <td>-</td>
+                                <td>${num1} - ${num2}</td>
+                                <td>${results}</td>
+                            </tr>
+                            <tr>
+                                <td>${num1}</td>
+                                <td>${num2}</td>
+                                <td>*</td>
+                                <td>${num1} * ${num2}</td>
+                                <td>${resultm}</td>
+                            </tr>
+                            <tr>
+                                <td>${num1}</td>
+                                <td>${num2}</td>
+                                <td>/</td>
+                                <td>${num1} / ${num2}</td>
+                                <td>${resultd}</td>
+                            </tr>
+                            <tr>
+                                <td>${num1}</td>
+                                <td>${num2}</td>
+                                <td>%</td>
+                                <td>${num1} % ${num2}</td>
+                                <td>${resultmod}</td>
+                            </tr>
+                            <tr>
+                                <td>${num1}</td>
+                                <td>${num2}</td>
+                                <td>++</td>
+                                <td>++${num1}</td>
+                                <td>${resultinc}</td>
+                            </tr>
+                            <tr>
+                                <td>${num1}</td>
+                                <td>${num2}</td>
+                                <td>--</td>
+                                <td>--${num2}</td>
+                                <td>${resultdec}</td>
+                            </tr>
+                            <tr>
+                                <td>${num1}</td>
+                                <td>${num2}</td>
+                                <td>**</td>
+                                <td>${num1} ** ${num2}</td>
+                                <td>${resultexe}</td>
+                            </tr>
+                        </table>
+                    `;
+                }
+            } else {
+                result = "<p style='color:red;'>Invalid input. Please enter numbers.</p>";
+            }
+
+            document.getElementById('resultContainer').innerHTML = result;
+        }
+    </script>
+</body>
+</html>

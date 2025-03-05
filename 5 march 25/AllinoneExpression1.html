@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebraic Identities Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: left;
+            margin: 20px;
+           
+        }
+        input {
+            padding: 5px;
+            margin: 5px;
+            border-collapse: collapse;
+        }
+        button {
+            padding: 8px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        table {
+           
+            margin: 2px;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 2px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        .output {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Algebraic Identities Calculator</h1>
+
+    <div>
+        <label for="val1">Value 1:</label>
+        <input type="number" id="val1" placeholder="Enter number">
+    </div>
+    <div>
+        <label for="val2">Value 2:</label>
+        <input type="number" id="val2" placeholder="Enter number">
+    </div>
+
+    <div>
+        <button onclick="calculate()">Submit</button>
+    </div>
+
+    <div id="output" class="output"></div>
+
+    <script>
+        function calculate() {
+            var a = parseFloat(document.getElementById("val1").value);
+            var b = parseFloat(document.getElementById("val2").value);
+
+            if (isNaN(a) || isNaN(b)) {
+                document.getElementById("output").innerHTML = "<p style='color:red;'>Please enter valid numbers.</p>";
+                return;
+            }
+
+            let outputHTML = `
+                <table>
+                
+                    <tr>
+                   
+                 
+                    <td colspan="3">a² - b² = (a - b)(a + b)</br>${a}² - ${b}² = (${a} - ${b})(${a} + ${b})</br>${(a - b) * (a + b)}= ${(a - b) * (a + b)}</td>
+                </tr>
+    
+
+
+                    
+                    <tr>
+                        <td colspan="3">(a + b)² = a² + 2ab + b²</br>(${a} + ${b})² = ${a}² + 2(${a})(${b}) + ${b}²</br>${(a + b) ** 2} =${(a + b) ** 2}</td></tr>
+             
+                    <tr>
+                        <td colspan="3">a² + b² = (a + b)² - 2ab</br>${a}² + ${b}² = (${a} + ${b})² - 2(${a})(${b})</br>${(a + b) ** 2 - 2 * a * b}= ${(a + b) ** 2 - 2 * a * b}</td></tr>
+                    
+                    <tr>
+                        <td colspan="3">(a - b)² = a² - 2ab + b²</br>(${a} - ${b})² = ${a}² - 2(${a})(${b}) + ${b}²</br>${a * 2 - 2 * a * b + b ** 2} = ${a * 2 - 2 * a * b + b ** 2}</td></tr>
+                    
+                    <tr>
+                        <td colspan="3">a³ - b³ = (a - b)(a² + ab + b²)</br>${a}³ - ${b}³ =(${a} - ${b})(${a}² + (${a})(${b}) + ${b}²)</br>${(a - b) * (a * 2 + a * b + b * 2)} = ${(a - b) * (a * 2 + a * b + b * 2)}</td></tr>
+                    
+                </table>
+            `;
+
+            document.getElementById("output").innerHTML = outputHTML;
+        }
+    </script>
+
+</body>
+</html>

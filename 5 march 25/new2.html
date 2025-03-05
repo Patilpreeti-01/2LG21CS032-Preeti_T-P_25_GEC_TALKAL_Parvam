@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebraic Identities Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input {
+            padding: 5px;
+            margin: 5px;
+        }
+        button {
+            padding: 8px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .container {
+            display: inline-block;
+            padding: 10px;
+        }
+        .output {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Algebraic Identities Calculator</h1>
+
+    <div class="container">
+        <label for="val1">Value 1:</label>
+        <input type="number" id="val1" placeholder="Enter number">
+    </div>
+    <div class="container">
+        <label for="val2">Value 2:</label>
+        <input type="number" id="val2" placeholder="Enter number">
+    </div>
+
+    <div class="container">
+        <button onclick="calculate()">Submit</button>
+    </div>
+
+    <div id="resultContainer" class="output"></div>
+
+    <script>
+        function calculate() {
+            var a = parseFloat(document.getElementById("val1").value);
+            var b = parseFloat(document.getElementById("val2").value);
+
+            if (isNaN(a) || isNaN(b)) {
+                document.getElementById("resultContainer").innerHTML = "<p style='color:red;'>Please enter valid numbers.</p>";
+                return;
+            }
+
+            let outputHTML = `
+                <div>
+                    a² - b² = (a - b)(a + b)<br>
+                    ${a}² - ${b}² = (${a} - ${b})(${a} + ${b})<br>
+                    ${(a - b) * (a + b)} = ${(a - b) * (a + b)}<br>
+                </div>
+                <div>
+                    (a + b)² = a² + 2ab + b²<br>
+                    (${a} + ${b})² = ${a}² + 2(${a})(${b}) + ${b}²<br>
+                    ${(a + b) * 2} = ${(a + b) * 2}<br>
+                </div>
+                <div>
+                    a² + b² = (a + b)² - 2ab<br>
+                    ${a}² + ${b}² = (${a} + ${b})² - 2(${a})(${b})<br>
+                    ${(a + b) * 2 - 2 * a * b} = ${(a + b) * 2 - 2 * a * b}<br>
+                </div>
+                <div>
+                    (a - b)² = a² - 2ab + b²<br>
+                    (${a} - ${b})² = ${a}² - 2(${a})(${b}) + ${b}²<br>
+                    ${(a - b) * 2} = ${(a - b) * 2}<br>
+                </div>
+                <div>
+                    a³ - b³ = (a - b)(a² + ab + b²)<br>
+                    ${a}³ - ${b}³ = (${a} - ${b})(${a}² + (${a})(${b}) + ${b}²)<br>
+                    ${(a - b) * (a * 2 + a * b + b * 2)} = ${(a - b) * (a * 2 + a * b + b * 2)}<br>
+                </div>
+            `;
+
+            // Case 3: If both numbers are < 10, use algebraic formulas
+            if (a < 10 && b < 10) {
+                let diffOfSquares = (a - b) * (a + b);
+                let sumOfSquares = (a + b) ** 2 - 2 * a * b;
+                let squareOfSum = (a + b) ** 2;
+                let squareOfDiff = (a - b) ** 2;
+                let diffOfCubes = (a - b) * (a * 2 + a * b + b * 2);
+
+                outputHTML = `
+                    <table>
+                        <tr>
+                            <th>Expression</th>
+                            <th>Formula</th>
+                            <th>Result</th>
+                        </tr>
+                        <tr>
+                            <td>a² - b²</td>
+                            <td>(${a} - ${b})(${a} + ${b})</td>
+                            <td>${diffOfSquares}</td>
+                        </tr>
+                        <tr>
+                            <td>(a + b)²</td>
+                            <td>${a}² + 2(${a} × ${b}) + ${b}²</td>
+                            <td>${squareOfSum}</td>
+                        </tr>
+                        <tr>
+                            <td>a² + b²</td>
+                            <td>(${a} + ${b})² - 2(${a} × ${b})</td>
+                            <td>${sumOfSquares}</td>
+                        </tr>
+                        <tr>
+                            <td>(a - b)²</td>
+                            <td>${a}² - 2(${a} × ${b}) + ${b}²</td>
+                            <td>${squareOfDiff}</td>
+                        </tr>
+                        <tr>
+                            <td>a³ - b³</td>
+                            <td>(${a} - ${b})(${a}² + ${a} × ${b} + ${b}²)</td>
+                            <td>${diffOfCubes}</td>
+                        </tr>
+                    </table>
+                `;
+            } else {
+                // Default Arithmetic Operations
+                let resulta = a + b;
+                let results = a - b;
+                let resultm = a * b;
+                let resultd = b !== 0 ? (a / b).toFixed(2) : "Infinity";
+                let resultmod = b !== 0 ? a % b : "NaN";
+                let resultinc = a + 1;
+                let resultdec = b - 1;
+                let resultexe = a ** b;
+
+                outputHTML = `
+                    <table>
+                        <tr>
+                            <th>X</th>
+                            <th>Y</th>
+                            <th>OP</th>
+                            <th>Expression</th>
+                            <th>Result</th>
+                        </tr>
+                        <tr>
+                            <td>${a}</td>
+                            <td>${b}</td>
+                            <td>+</td>
+                            <td>${a} + ${b}</td>
+                            <td>${resulta}</td>
+                        </tr>
+                        <tr>
+                            <td>${a}</td>
+                            <td>${b}</td>
+                            <td>-</td>
+                            <td>${a} - ${b}</td>
+                            <td>${results}</td>
+                        </tr>
+                        <tr>
+                            <td>${a}</td>
+                            <td>${b}</td>
+                            <td>*</td>
+                            <td>${a} * ${b}</td>
+                            <td>${resultm}</td>
+                        </tr>
+                        <tr>
+                            <td>${a}</td>
+                            <td>${b}</td>
+                            <td>/</td>
+                            <td>${a} / ${b}</td>
+                            <td>${resultd}</td>
+                        </tr>
+                        <tr>
+                            <td>${a}</td>
+                            <td>${b}</td>
+                            <td>%</td>
+                            <td>${a} % ${b}</td>
+                            <td>${resultmod}</td>
+                        </tr>
+                        <tr>
+                            <td>${a}</td>
+                            <td>${b}</td>
+                            <td>++</td>
+                            <td>++${a}</td>
+                            <td>${resultinc}</td>
+                        </tr>
+                        <tr>
+                            <td>${a}</td>
+                            <td>${b}</td>
+                            <td>--</td>
+                            <td>--${b}</td>
+                            <td>${resultdec}</td>
+                        </tr>
+                        <tr>
+                            <td>${a}</td>
+                            <td>${b}</td>
+                            <td>**</td>
+                            <td>${a} ** ${b}</td>
+                            <td>${resultexe}</td>
+                        </tr>
+                    </table>
+                `;
+            }
+
+            document.getElementById('resultContainer').innerHTML = outputHTML;
+        }
+    </script>
+
+</body>
+</html>
