@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shape Drawer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align:left;
+            margin: 20px;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .shape-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+        }
+        .shape {
+            display: inline-block;
+            background-color:white;
+            border:5px solid black
+        }
+        .circle {
+            border-radius: 50%;
+        }
+        .triangle {
+            width: 0;</br>height: 0;
+            
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid lightblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shape Drawer</h1>
+
+    <div class="container">
+        <label for="shape">Choose a shape:</label>
+        <select id="shape">
+            <option value="rectangle">Rectangle</option>
+            <option value="square">Square</option>
+            <option value="circle">Circle</option>
+            <option value="triangle">Triangle</option>
+        </select>
+        
+        <br><br>
+        <label for="width">Width:</label>
+        <input type="number" id="width" placeholder="Enter width">
+        
+        <label for="height">Height:</label>
+        <input type="number" id="height" placeholder="Enter height">
+        
+        <br><br>
+        <button onclick="drawShape()">Submit</button>
+    </div>
+
+    <div class="shape-container">
+        <div id="shapeDisplay"></div>
+    </div>
+
+    <script>
+        function drawShape() {
+            let shapeType = document.getElementById("shape").value;
+            let width = parseInt(document.getElementById("width").value);
+            let height = parseInt(document.getElementById("height").value);
+            let shapeDisplay = document.getElementById("shapeDisplay");
+
+            shapeDisplay.innerHTML = ""; // Clear previous shape
+            shapeDisplay.style = ""; // Reset styles
+
+            let newShape = document.createElement("div");
+
+            if (shapeType === "rectangle") {
+                newShape.classList.add("shape");
+                newShape.style.width = width + "px";
+                newShape.style.height = height + "px";
+            } 
+            else if (shapeType === "square") {
+                newShape.classList.add("shape");
+                newShape.style.width = width + "px";
+                newShape.style.height = width + "px"; // Square: height = width
+            } 
+            else if (shapeType === "circle") {
+                newShape.classList.add("shape", "circle");
+                newShape.style.width = width + "px";
+                newShape.style.height = width + "px"; // Circle: width = height
+            } 
+            else if (shapeType === "triangle") {
+                newShape.classList.add("triangle");
+                newShape.style.borderLeft = width / 2 + "px solid transparent";
+                newShape.style.borderRight = width / 2 + "px solid transparent";
+                newShape.style.borderBottom = height + "px solid lightblue";
+            }
+
+            shapeDisplay.appendChild(newShape);
+        }
+    </script>
+</body>
+</html>
