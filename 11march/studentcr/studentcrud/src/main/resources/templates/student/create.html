@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Student</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+            body {
+                background-image: url('/images/image.jpg');
+                background-repeat: no-repeat;
+                background-size: 100%, 100%;
+    
+            }
+    </style>
+</head>
+<body>
+    <div th:replace="fragment/nav :: nav"></div>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 50%;">
+        <div class="w-50">
+            <h1 class="mt-5 text-center">Create Student</h1>
+            <form th:action="@{/users/save}" th:object="${student}" method="post" class="mt-3">
+                <div class="form-group">
+                    <label for="studentName"><b>Name</b></label>
+                    <input type="text" class="form-control" id="studentName" th:field="*{name}" placeholder="Enter student name">
+                </div>
+                <div class="form-group">
+                    <label for="studentEmail"><b>Email</b></label>
+                    <input type="email" class="form-control" id="studentEmail" th:field="*{email}" placeholder="Enter student email">
+                </div>
+                <div class="form-group">
+                    <label for="studentPhone"><b>Phone</b></label>
+                    <input type="number" class="form-control" id="studentPhone" th:field="*{phone}" placeholder="Enter student Phone">
+                </div>
+                <div class="form-group">
+                    <label for="studentAdress"><b>Adress</b></label>
+                    <input type="text" class="form-control" id="studentAdress" th:field="*{adress}" placeholder="Enter student Adress">
+                </div>
+                <div class="form-group">
+                    <label for="gender"><b>Gender:</b></label><br>
+                    <select id="gender" name="gender" th:field="*{gender}">
+                        <option value=""></option>
+                        <option value=" Male"> Male</option>
+                        <option value="Female"> Female</option>
+                        <option value="Other"> Other</option>
+                    </select><br>
+                </div>
+                <div>
+                    <label for="DOB"><b>Date Of Birth:</b></label>
+                    <input type="date" class="form-control" id="studentDob" th:field="*{dob}" placeholder="Enter student Dob">
+                </div>
+                <div>
+                    <label for="File"><b>File</b></label>
+                    <input type="file" class="form-control" id="studentfile" th:field="*{file}" placeholder="Enter student file">
+                </div>
+                
+                <br>
+                <div>
+                    <label for="Usn"><b>Usn</b></label>
+                    <input type="text" class="form-control" id="studentusn" th:field="*{usn}" placeholder="Enter student usn">
+                </div>
+                
+                <br>
+                <div class="form-check">
+                    <label for="employeeLanguage">Language</label><br>
+                    <input class="form-check-input" type="radio" name="language" id="gridRadios1" value="Java" th:field="*{language}">
+                    <label class="form-check-label" for="gridRadios1">
+                     Java
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="language" id="gridRadios2" value="Python" th:field="*{language}">
+                    <label class="form-check-label" for="gridRadios2">
+                      Python
+                    </label>
+                </div>
+      <div class="form-group">
+        <label for="topic">Topic:</label><br>
+        <input type="checkbox" id="nature" name="topic" th:field="*{topic}" placeholder="Enter student topic1" value="nature">
+        <label for="topic1"> Nature</label><br>
+        <input type="checkbox" id="Horror" name="topic"  th:field="*{topic}" placeholder="Enter student topic2"  value="horror">
+        <label for="topic2"> Horror</label><br>
+    </div> 
+                <button type="submit" class="btn btn-primary btn-block"><b>Submit</b></button>
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
