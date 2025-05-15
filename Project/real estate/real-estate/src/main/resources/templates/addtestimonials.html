@@ -1,0 +1,97 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Add Projects - ECOBUILD
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+ </head>
+ <body class="bg-[#f3f6fd] min-h-screen flex flex-col">
+  <div class="flex flex-1 min-h-screen">
+   <!-- Sidebar -->
+   <aside class="w-56 bg-gradient-to-b  flex flex-col text-white" style="background-color:  grey;">
+    <div class="px-5 py-6 border-b border-[#4a6ef2] flex flex-col items-center">
+     <img alt="White construction helmet icon" class="mb-2" height="40" src="img/image.jpg" width="40"/>
+     <h1 class="font-extrabold text-lg leading-tight text-center">
+      REAMS
+     </h1>
+    </div>
+    <nav class="flex flex-col flex-1 px-5 pt-6 space-y-4 text-sm font-normal">
+     <a class="flex items-center space-x-3 text-[#a3b0d9] hover:text-white transition-colors" href="#">
+      <i class="fas fa-tachometer-alt text-[14px]">
+      </i>
+      <span>
+       Dashboard
+      </span>
+     </a>
+     <div class="relative group">
+      <button aria-expanded="false" class="w-full flex items-center justify-between text-[#a3b0d9] hover:text-white transition-colors focus:outline-none" type="button">
+       <div class="flex items-center space-x-3">
+        <i class="fas fa-file-alt text-[14px]">
+        </i>
+        <span>
+         Projects
+        </span>
+       </div>
+       <i class="fas fa-chevron-right text-[14px] transition-transform group-hover:rotate-90">
+       </i>
+      </button>
+      <div class="absolute left-full top-0 mt-0 ml-1 w-40 bg-gradient-to-b  rounded shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity z-10" 
+      style="background-color:  grey;">
+        <a class="w-56 bg-gradient-to-b  flex flex-col text-white" style="background-color:  grey;" th:href="@{/showproperty}">
+        Show Property
+       </a>
+       <a class="block px-4 py-2 text-sm text-[#a3b0d9] hover:text-white hover:bg-[#2a3eb1]"  th:href="@{/properties/add}">
+        Add Property
+       </a>
+       <a class="block px-4 py-2 text-sm text-[#a3b0d9] hover:text-white hover:bg-[#2a3eb1]" href="project.html">
+          Property
+        </a>
+      </div>
+     </div>
+     
+     <div class="relative group">
+        <button aria-expanded="false" class="w-full flex items-center justify-between text-[#a3b0d9] hover:text-white transition-colors focus:outline-none" type="button">
+         <div class="flex items-center space-x-3">
+          <i class="fas fa-file-alt text-[14px]">
+          </i>
+          <span>
+           Testimonials
+          </span>
+         </div>
+         <i class="fas fa-chevron-right text-[14px] transition-transform group-hover:rotate-90">
+         </i>
+        </button>
+        <div class="absolute left-full top-0 mt-0 ml-1 w-40 bg-gradient-to-b rounded shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity z-10" style="background-color:  grey;">
+         <a class="block px-4 py-2 text-sm text-[#a3b0d9] hover:text-white hover:bg-[#2a3eb1]" th:href="@{/showtestimonials}">
+          Show Testimonials
+         </a>
+         <a class="block px-4 py-2 text-sm text-[#a3b0d9] hover:text-white hover:bg-[#2a3eb1]" th:href="@{/addtestimonials}">
+          Add Testimonials
+         </a>
+        </div>
+       </div>
+     
+    </nav>
+    <div class="flex justify-center py-6">
+     
+    </div>
+   </aside>
+   <!-- Main content -->
+   <div class="container-xxl py-5">
+    <div class="container">
+        <h2>Add Testimonial</h2>
+    <form th:action="@{/addtestimonials}" method="post">
+        <label>Title: <input type="text" name="title" /></label><br/>
+        <label>Image URL: <input type="text" name="imageUrl" /></label><br/>
+        <label>Description: <textarea name="description"></textarea></label><br/>
+        <button type="submit">Submit</button>
+    </form>>
+    </div>
+</div>
+  </div>
+ </body>
+</html>

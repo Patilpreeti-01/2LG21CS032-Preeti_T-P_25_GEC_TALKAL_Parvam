@@ -1,0 +1,194 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Dashboard
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <script>
+   // Simple dropdown toggle script
+   function toggleDropdown(id) {
+    const el = document.getElementById(id);
+    if (el.classList.contains("hidden")) {
+     el.classList.remove("hidden");
+    } else {
+     el.classList.add("hidden");
+    }
+   }
+  </script>
+ </head>
+ <body class="bg-[#f7f9fc] font-sans text-gray-700">
+  <div class="flex min-h-screen">
+   <!-- Sidebar -->
+   <aside class="flex flex-col bg-gradient-to-b w-56 text-white"style="background-color: grey;">
+    <div class="flex flex-col items-center py-6 border-b border-blue-600">
+      <img alt="White construction helmet icon" class="mb-2" height="40" src="img/image.jpg" width="40"/>
+     <h1 class="font-extrabold text-lg leading-tight text-center">
+      REAMS
+     </h1>
+    </div>
+    <nav class="flex flex-col px-6 py-4 space-y-3 text-sm font-normal">
+      <a class="flex items-center space-x-3 text-[#a8c0ff] hover:text-white" href="#">
+       <i class="fas fa-tachometer-alt text-sm">
+       </i>
+       <span>
+        Dashboard
+       </span>
+      </a>
+      <!-- Projects with dropdown -->
+      <div class="relative">
+       <button aria-expanded="false" aria-haspopup="true" class="flex items-center space-x-3 text-[#a8c0ff] hover:text-white w-full" onclick="toggleDropdown('projectsDropdown', 'projectsChevron')" type="button">
+        <i class="fas fa-folder-open text-sm">
+        </i>
+        <span>
+         Projects
+        </span>
+        <i class="fas fa-chevron-right ml-auto text-xs transition-transform duration-200" id="projectsChevron">
+        </i>
+       </button>
+       <div class="hidden absolute left-full top-0 mt-0 ml-2 w-40 bg-gradient-to-b rounded shadow-lg z-10" style="background-color:  grey;"id="projectsDropdown">
+        <a class="block px-4 py-2 text-sm text-[#a8c0ff] hover:text-white hover:bg-white/10" th:href="@{/showproperty}">
+         Show Property
+        </a>
+        <a class="block px-4 py-2 text-sm text-[#a8c0ff] hover:text-white hover:bg-white/10"  th:href="@{/properties/add}">
+         Add Property
+        </a>
+       </div>
+      </div>
+      
+       <!-- Testimonials with dropdown -->
+      <div class="relative">
+          <button aria-expanded="false" aria-haspopup="true" class="flex items-center space-x-3 text-[#a8c0ff] hover:text-white w-full" onclick="toggleDropdown('testimonialsDropdown', 'testimonialsChevron')" type="button">
+           <i class="fas fa-folder-open text-sm">
+           </i>
+           <span>
+            Testimonials
+           </span>
+           <i class="fas fa-chevron-right ml-auto text-xs transition-transform duration-200" id="testimonialsChevron">
+           </i>
+          </button>
+          <div class="hidden absolute left-full top-0 mt-0 ml-2 w-40 bg-gradient-to-b rounded shadow-lg z-10" style="background-color:  grey;" id="testimonialsDropdown">
+           <a class="block px-4 py-2 text-sm text-[#a8c0ff] hover:text-white hover:bg-white/10"th:href="@{/showtestimonials}">
+            Show Testimonials
+           </a>
+           <a class="block px-4 py-2 text-sm text-[#a8c0ff] hover:text-white hover:bg-white/10" th:href="@{/addtestimonials}">
+            Add Testimonials
+           </a>
+          </div>
+         </div>
+      
+     </nav>
+    <div class="flex justify-center py-6">
+     
+    </div>
+   </aside>
+   <!-- Main content -->
+   <div class="flex flex-col flex-grow">
+    <!-- Header -->
+    <header class="flex items-center justify-end bg-white border-b border-gray-200 px-6 h-14">
+     <!-- Removed avatar and name -->
+    </header>
+    <!-- Content area -->
+    <main class="flex-grow p-6">
+     <h2 class="text-lg mb-4">
+      Testimonials
+     </h2>
+     <div class="overflow-x-auto bg-white rounded shadow-sm">
+      <table class="w-full border-collapse border border-gray-200 text-sm text-gray-600">
+       <thead class="bg-[#f9fbff] text-gray-600">
+        <tr>
+         <th class="border border-gray-200 px-4 py-3 text-left font-semibold w-14">
+          No
+         </th>
+         <th class="border border-gray-200 px-4 py-3 text-left font-semibold">
+          Title
+         </th>
+         <th class="border border-gray-200 px-4 py-3 text-left font-semibold w-36">
+         Image
+         </th>
+         <th class="border border-gray-200 px-4 py-3 text-left font-semibold w-48">
+          Description
+         </th>
+         <th class="border border-gray-200 px-4 py-3 text-left font-semibold w-48">
+          Processes
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr class="even:bg-[#f9fbff]">
+         <td class="border border-gray-200 px-4 py-4 font-semibold">
+          1
+         </td>
+         <td class="border border-gray-200 px-4 py-4">
+          Test Title 1
+         </td>
+         <td class="border border-gray-200 px-4 py-4 text-center">
+          <img alt="Construction workers wearing helmets on scaffolding" class="inline-block" height="60" src="https://storage.googleapis.com/a1aa/image/eee36b98-679b-40fc-511b-cded49acbc4e.jpg" width="60"/>
+         </td>
+         <td class="border border-gray-200 px-4 py-4">
+          2022-04-16 20:55:18
+         </td>
+         <td class="border border-gray-200 px-4 py-4 space-x-2">
+          <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">
+           Delete
+          </button>
+          <button class="bg-yellow-400 text-white px-4 py-2 rounded hover:bg-yellow-500 transition">
+           Edit
+          </button>
+         </td>
+        </tr>
+        <tr class="even:bg-[#f9fbff]">
+         <td class="border border-gray-200 px-4 py-4 font-semibold">
+          2
+         </td>
+         <td class="border border-gray-200 px-4 py-4">
+          Test Title 2
+         </td>
+         <td class="border border-gray-200 px-4 py-4 text-center">
+          <img alt="People standing inside a building with large windows and columns" class="inline-block" height="60" src="https://storage.googleapis.com/a1aa/image/d1f447f1-f70d-432d-bdc0-6a91630109f8.jpg" width="60"/>
+         </td>
+         <td class="border border-gray-200 px-4 py-4">
+          2022-04-16 20:55:55
+         </td>
+         <td class="border border-gray-200 px-4 py-4 space-x-2">
+          <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">
+           Delete
+          </button>
+          <button class="bg-yellow-400 text-white px-4 py-2 rounded hover:bg-yellow-500 transition">
+           Edit
+          </button>
+         </td>
+        </tr>
+        <tr class="even:bg-[#f9fbff]">
+         <td class="border border-gray-200 px-4 py-4 font-semibold">
+          3
+         </td>
+         <td class="border border-gray-200 px-4 py-4">
+          Test Title 3
+         </td>
+         <td class="border border-gray-200 px-4 py-4 text-center">
+          <img alt="Worker in yellow jacket building a wall with concrete blocks" class="inline-block" height="60" src="https://storage.googleapis.com/a1aa/image/1ac1d5eb-797c-477a-285b-200320dfbca2.jpg" width="60"/>
+         </td>
+         <td class="border border-gray-200 px-4 py-4">
+          2022-04-16 20:58:07
+         </td>
+         <td class="border border-gray-200 px-4 py-4 space-x-2">
+          <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">
+           Delete
+          </button>
+          <button class="bg-yellow-400 text-white px-4 py-2 rounded hover:bg-yellow-500 transition">
+           Edit
+          </button>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </main>
+   </div>
+  </div>
+ </body>
+</html>

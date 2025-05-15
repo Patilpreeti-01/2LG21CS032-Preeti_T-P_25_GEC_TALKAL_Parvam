@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Registration</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    
+    </style>
+</head>
+<body>
+   
+    <div class="container d-flex justify-content-center align-items-center" "width:100px;" style="height: 100vh;">
+        <div class="w-50">
+            <h1 class="mt-5 text-center">Resister Form</h1>
+            <form th:action="@{/save}" th:object="${register}" method="post" class="mt-3" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="registerName">Name</label>
+                    <input type="text" class="form-control" id="registerName" th:field="*{username}" placeholder="Enter register name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="resisterPassword">Password</label>
+                    <input type="password" class="form-control" id="registerpasswordl" th:field="*{password}" placeholder="Enter register password">
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmpassword"> Confirmpassword </label>
+                    <input type="password" class="form-control" id="registerconfirmpassword" th:field="*{confirmpassword}" placeholder="Enter confirmpassword phone">
+                </div>
+               
+                <div class="form-group">
+                    <label for="registertAddress">Address</label>
+                    <input type="text" class="form-control" id="registerAddress" th:field="*{address}" placeholder="Enter register Address">
+                </div>
+                <div class="form-group">
+                    <label for="registerMobilenumber">Mobilenumber</label>
+                    <input type="text" class="form-control" id="registerMobilenumber" th:field="*{mobilenumber}" placeholder="Enter register Mobilenumber">
+                </div>
+                <div class="form-group">
+                    <label for="registertEmail">Email</label>
+                    <input type="text" class="form-control" id="registerEmail" th:field="*{email}" placeholder="Enter register Email">
+                </div>
+               
+                
+                <button type="Register" class="btn btn-primary btn-block"style="background-color:green;">Register</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

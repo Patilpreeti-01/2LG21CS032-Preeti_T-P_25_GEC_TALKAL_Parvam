@@ -18,11 +18,11 @@
 </head>
 
 <body>
-    <div th:replace="fragment/nav :: nav"></div>
+    <div th:replace="fragments/nav :: nav"></div>
     <div class="container d-flex justify-content-center align-items-center" style="height: 80vh;width:50%">
         <div class="w-50">
             <h1 class="mt-5 text-center">Create Employee</h1>
-            <form th:action="@{/preeti/save}" th:object="${employee}" method="post" class="mt-3">
+            <form th:action="@{/Preeti/save}" th:object="${employee}" method="post" class="mt-3">
                 <div class="form-group">
                     <label for="EmployeeName"><b>Name</b></label>
                     <input type="text" class="form-control" id="employeeName" th:field="*{name}"

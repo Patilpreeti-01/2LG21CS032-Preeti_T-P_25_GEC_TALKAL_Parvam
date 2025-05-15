@@ -16,13 +16,14 @@
   </style>
 </head>
 <body>
-  <div th:replace="fragment/nav :: nav"></div>
+  <div th:replace="fragments/nav :: nav"></div>
 
-<div class="container mt-3">+
+<div class="container mt-3">
     <h2>Student List</h2>
     <a th:href="@{/users/create}" class="btn btn-warning m-3">Add Student</a>
     <a th:href="@{/Preeti/create}" class="btn btn-warning m-3">Add Employee</a>
     <a th:href="@{/human/create}" class="btn btn-warning m-3">Add Staff</a>
+    <a th:href="@{/engineers/create}" class="btn btn-warning m-3">Add Profile</a>
     <table class="table table-success table-striped">
     <thead class="table-dark">
       <tr>
